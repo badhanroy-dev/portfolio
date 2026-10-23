@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="Badhan Roy — CSE student exploring AI, machine learning and software engineering.">
+  <title>Badhan Roy | AI & Software Engineering</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b14;
+      --panel: #101625;
+      --text: #f1f5ff;
+      --muted: #9aa6bd;
+      --cyan: #62eaff;
+      --purple: #a78bfa;
+      --border: rgba(255,255,255,.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(80,65,180,.16), transparent 38%),
+        radial-gradient(ellipse at 0% 35%, rgba(34,211,238,.08), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1120px, 90%); margin: auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,11,20,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .hero {
+      min-height: 76vh;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 50px;
+      padding-top: 75px;
+      padding-bottom: 90px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.2; }
+
+    h1 {
+      margin: 22px 0;
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      letter-spacing: -.055em;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p, .section-copy { color: var(--muted); max-width: 620px; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-weight: 600;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .btn:hover { transform: translateY(-3px); border-color: var(--cyan); }
+
+    .btn-primary {
+      color: #061018;
+      background: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .orbital {
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .orbital::before, .orbital::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(98,234,255,.28);
+      border-radius: 50%;
+      width: 260px;
+      height: 260px;
+      animation: rotate 18s linear infinite;
+    }
+
+    .orbital::after {
+      width: 320px;
+      height: 140px;
+      border-color: rgba(167,139,250,.5);
+      transform: rotate(-35deg);
+      animation-duration: 12s;
+    }
+
+    .core {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font: 700 2.5rem 'Space Grotesk', sans-serif;
+      color: var(--cyan);
+      background: radial-gradient(circle, #1b3750, #101323 70%);
+      box-shadow: 0 0 65px rgba(98,234,255,.22);
+      border: 1px solid rgba(98,234,255,.45);
+    }
+
+    @keyframes rotate { to { rotate: 360deg; } }
+
+    section { padding: 85px 0; }
+
+    .section-heading { margin-bottom: 34px; }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 10px 0 14px;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .card {
+      background: linear-gradient(145deg, rgba(19,27,44,.94), rgba(12,17,29,.94));
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 25px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .card:hover { transform: translateY(-5px); border-color: rgba(98,234,255,.5); }
+
+    .card h3 { font-size: 1.15rem; margin: 12px 0; }
+
+    .card p { color: var(--muted); font-size: .94rem; }
+
+    .card-icon { font-size: 1.7rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+
+    .tag {
+      padding: 5px 10px;
+      font-size: .78rem;
+      color: var(--cyan);
+      background: rgba(98,234,255,.07);
+      border: 1px solid rgba(98,234,255,.17);
+      border-radius: 6px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--cyan);
+      font-size: .9rem;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .about-layout p { color: var(--muted); }
+
+    .contact-panel {
+      padding: 40px;
+      border: 1px solid rgba(98,234,255,.2);
+      background: linear-gradient(120deg, rgba(98,234,255,.07), rgba(167,139,250,.08));
+      border-radius: 18px;
+    }
+
+    footer {
+      padding: 25px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: .85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .reveal { animation: appear .8s ease both; }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner { padding: 15px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 15px; }
+      .hero { grid-template-columns: 1fr; padding-top: 55px; gap: 20px; }
+      .orbital { min-height: 290px; }
+      .grid, .about-layout { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+      .contact-panel { padding: 25px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#home">BR<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="container hero" id="home">
+      <div class="reveal">
+        <div class="eyebrow">CSE Student · AI Enthusiast</div>
+        <h1>Hi, I'm Badhan Roy.<br>
+          I build for the <span class="gradient">future.</span>
+        </h1>
+        <p>
+          A Computer Science student at United International University,
+          exploring artificial intelligence, machine learning, and software
+          engineering to turn ideas into useful digital experiences.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+          <a class="btn" href="#contact">Let's connect</a>
+        </div>
+      </div>
+
+      <div class="orbital" aria-label="Animated futuristic orbital graphic">
+        <div class="core">BR</div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">01 / About me</div>
+          <h2>Curiosity into <span class="gradient">creation.</span></h2>
+        </div>
+        <div class="about-layout">
+          <div class="card">
+            <h3>Who I am</h3>
+            <p>
+              I'm a CSE student who enjoys learning how technology works
+              and building practical software. I’m especially interested
+              in combining AI with real-world applications.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What I'm exploring</h3>
+            <p>
+              My current focus is strengthening my programming fundamentals,
+              data structures and algorithms, software development skills,
+              and foundations in AI and machine learning.
+            </p>
+            <div class="tags">
+              <span class="tag">AI / ML</span>
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Software Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">02 / Toolkit</div>
+          <h2>Tools of my <span class="gradient">trade.</span></h2>
+          <p class="section-copy">Technologies I'm learning and using to build my projects.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">⌘</div>
+            <h3>Programming</h3>
+            <p>Building logic, solving problems, and learning core programming concepts.</p>
+            <div class="tags">
+              <span class="tag">C++</span><span class="tag">Python</span>
+              <span class="tag">JavaScript</span><span class="tag">PHP</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-icon">◈</div>
+            <h3>Web & Database</h3>
+            <p>Creating web experiences and working with structured data.</p>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span>
+              <span class="tag">MySQL</span><span class="tag">SQL</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-icon">⌬</div>
+            <h3>Tools & Learning</h3>
+            <p>Practicing collaborative development and exploring data analysis.</p>
+            <div class="tags">
+              <span class="tag">Git</span><span class="tag">GitHub</span>
+              <span class="tag">VS Code</span><span class="tag">NumPy</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">03 / Selected work</div>
+          <h2>Projects in <span class="gradient">progress.</span></h2>
+          <p class="section-copy">A few projects where I'm putting my learning into practice.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">♧</div>
+            <h3>Surplus Food Rescue</h3>
+            <p>A web project focused on connecting surplus food with people who can use it, reducing waste and supporting communities.</p>
+            <div class="tags"><span class="tag">Web Development</span><span class="tag">Social Impact</span></div>
+            <a class="project-link" href="https://github.com/badhanroy-dev/SurplusFoodRescue" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+          </article>
+          <article class="card">
+            <div class="card-icon">♡</div>
+            <h3>HumanityLink</h3>
+            <p>A database-focused project designed around connecting people and supporting community-oriented initiatives.</p>
+            <div class="tags"><span class="tag">DBMS</span><span class="tag">Database Design</span></div>
+            <a class="project-link" href="https://github.com/badhanroy-dev/humanitylink" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+          </article>
+          <article class="card">
+            <div class="card-icon">▥</div>
+            <h3>Student Analytics</h3>
+            <p>A Python and NumPy project exploring student data through numerical operations and basic analytics.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span></div>
+            <a class="project-link" href="https://github.com/badhanroy-dev/numpy-student-analytics" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="eyebrow">04 / Contact</div>
+          <h2 style="font-size:clamp(2rem,4vw,3rem);margin:12px 0">
+            Let's build something <span class="gradient">meaningful.</span>
+          </h2>
+          <p class="section-copy">
+            Interested in software, AI, or collaborating on a project?
+            Feel free to reach out.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:badhan.roy444@gmail.com">Email me ↗</a>
+            <a class="btn" href="https://github.com/badhanroy-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Badhan Roy</span>
+      <span>Designed with curiosity and a little bit of code.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
